@@ -1,6 +1,25 @@
 {
-  "name": "CS5610-WebDev-Server-Team21",
+  "name": "cs5610-webdev-server-team21",
   "version": "1.0.0",
-  "dependencies": {
-  }
+  "description": "this is a Node.js application for the final project of CS5610",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pats-Chen/CS5610-WebDev-Server-Team21.git"
+  },
+  "keywords": [
+    "Node",
+    "REST",
+    "Server",
+    "HTTP"
+  ],
+  "author": "Jianhua Che, Jiazhe Chen, Jie Li, Mozhi Shen, Ruining Yang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pats-Chen/CS5610-WebDev-Server-Team21/issues"
+  },
+  "homepage": "https://github.com/Pats-Chen/CS5610-WebDev-Server-Team21#readme"
 }
