@@ -63,10 +63,10 @@ const AuthenticationController = (app) => {
             if (userData) {
                 res.json(userData);
             } else {
-                res.json({});
+                // res.json({});
             }
         } catch (err) {
-            res.json({});
+            // res.json({});
         }
     }
 
