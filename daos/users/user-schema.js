@@ -14,7 +14,7 @@ const UserSchema = mongoose.Schema({
     bio: String,
     followers: Number,
     following: Number,
-    paidSubscriber: {type: String, required: true},
+    userStatus: {type: String, required: true},
     planNumber: Number,
     followingList: [],
     followersList: [],
