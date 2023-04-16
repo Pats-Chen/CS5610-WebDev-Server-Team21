@@ -11,7 +11,8 @@ import mongoose from "mongoose";
 
 dotenv.config();
 
-const CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+// ******* const CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+const CONNECTION_STRING = "mongodb://127.0.0.1:27017/travelPlan"
 mongoose.connect(CONNECTION_STRING).then(() => console.log('DB started'))
     .catch(() => () => console.log(error.message));
 
@@ -24,7 +25,8 @@ app.use(cors(
         credentials: true,
         // must whitelists allowed domains(if using credentials)
         // http://localhost:3000
-        origin: ['http://localhost:3000', process.env.CORS_ORIGIN]
+        // ********  origin: ['http://localhost:3000', process.env.CORS_ORIGIN]
+        origin: 'http://localhost:3000',
     }));
 
 // Secret is used in hashing the session ID
