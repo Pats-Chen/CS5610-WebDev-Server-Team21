@@ -16,9 +16,6 @@ export const findAllUsersWithoutMe = async (uid) =>
  * @param {string} uid User's primary key
  */
 
-export const findUserById = async (uid) =>
-    UserModel
-        .findById(uid)
 
 /**
  * Uses UserModel to retrieve single user document from users collection
@@ -47,10 +44,6 @@ export const deleteUser = async (uid) =>
  * @param {string} uid Primary key of user to be modified
  * @param user User object containing properties and their new values
  */
-export const updateUser = async (uid, user) =>
-    UserModel.updateOne(
-        {_id: uid},
-        {$set: user});
 
 // just for test, delete user by username
 export const deleteUserByUsername = async (username) =>
@@ -59,3 +52,10 @@ export const deleteUserByUsername = async (username) =>
 // login
 export const findUserByCredentials = async (username, password) =>
     UserModel.findOne({username: username, password: password});
+
+// update user
+export const updateUser = (uid, user) =>
+    UserModel.updateOne({_id: uid}, {$set: user});
+
+export const findUserById = async (uid) =>
+    await UserModel.findOne({_id:uid});

@@ -24,10 +24,12 @@ const findUserByUserId = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-    const userId = req.params['uid'];
+    const uid = req.params.uid;
     const updates = req.body;
-    await userDao.updateUser(userId, updates);
-    res.sendStatus(200);
+    const status = await userDao.updateUser(uid, updates);
+    const newuser = await userDao.findUserById(uid);
+    res.json(newuser);
+
 }
 
 export default UserController;

@@ -35,6 +35,7 @@ const AuthenticationController = (app) => {
         const password = user.password;
         const existingUser = await userDao.findUserByUsername(username);
 
+
         // username doesn't exist
         if (!existingUser) {
             res.sendStatus(403);
@@ -51,6 +52,8 @@ const AuthenticationController = (app) => {
                 res.sendStatus(403);
             }
         }
+
+
     }
 
     //return the content of profile property in session
