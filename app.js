@@ -7,6 +7,7 @@ import cors from 'cors'
 import session from 'express-session'
 import dotenv from 'dotenv'
 import mongoose from "mongoose";
+import PlansController from "./controllers/plans/plans-controller.js";
 
 
 dotenv.config();
@@ -55,5 +56,6 @@ app.use(express.json({
 
 HelloController(app);
 UsersController(app);
+PlansController(app);
 AuthenticationController(app);
 app.listen(process.env.PORT || 4000);
