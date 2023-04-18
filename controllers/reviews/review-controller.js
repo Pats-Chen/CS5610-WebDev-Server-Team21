@@ -1,13 +1,12 @@
 import * as reviewDao from "../../daos/reviews/review-dao.js";
-import * as userDao from "../../daos/users/users-dao.js";
 
 
 const  ReviewController= (app) => {
+    app.post('/api/reviews', createReview);
     app.get('/api/reviews/plan/:planId/', findAllReviewByPlanId);
+    app.delete('/api/reviews/:rId', deleteReview);
     app.get('/api/reviews/:rId', findReview);
     app.get('/api/reviews/author/:authorId', findAllReviewByAuthor);
-    app.delete('/api/reviews/:rId', deleteReview);
-    app.post('/api/reviews', createReview);
     app.put('/api/reviews/:rId', updateReview);
 }
 
