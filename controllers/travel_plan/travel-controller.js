@@ -1,4 +1,11 @@
 import * as travelDao from "../../daos/travel_plan/travel_plan_dao.js";
+import {
+    deletePlanByPlanID,
+    deleteTravelPlan,
+    findTravelPlanbyID,
+    updateTravelPlan
+} from "../../daos/travel_plan/travel_plan_dao.js";
+import {json} from "express";
 
 
 const travelController = (app) => {
@@ -74,10 +81,53 @@ const travelController = (app) => {
             res.json({success: false, "msg": "write db failed" + err})
         }
     }
+    const deletePlanByPlanID = async (req, res) => {
+        try {
+            const pid = req.params.pid;
+            await travelDao.deletePlanByPlanID(pid);
+            res.sendStatus(200);
+        } catch (err) {
+            res.status(500).send(err.message);
+        }
+    }
+
+    const updateTravelPlan = async (req, res) => {
+        const pid = req.params.pid;
+        let updates = req.body;
+        // console.log(updates);
+        const status = await travelDao.updateTravelPlan(pid, updates);
+        // console.log(status);
+        const newPlan = await travelDao.findTravelPlanbyID(pid);
+        res.json(newPlan);
+
+    }
+
+    const findTravelPlanbyID = async (req, res) => {
+        try {
+            const pId = req.params.pid;
+            const plans = await travelDao.findTravelPlanbyID(pId);
+            res.json(plans);
+        } catch (err) {
+            res.status(500).send(err.message);
+        }
+    }
+
+    const findAllTravelPlanByUser = async (req, res) => {
+        try {
+            const userId = req.params.uid;
+            const plans = await travelDao.findAllTravelPlanByUser(userId);
+            res.json(plans);
+        } catch (err) {
+            res.status(500).send(err.message);
+        }
+    }
 
     app.post("/api/travel/create", travel_create);
     app.get("/api/travel/get/:uid", travel_info);
-
+    app.delete('/api/travel/delete/:pid', deletePlanByPlanID);
+    app.put('/api/travel/update/:pid', updateTravelPlan);
+    app.get("/api/travel/findOne/:pid", findTravelPlanbyID);
+    app.get("/api/travel/findAll/:uid", findAllTravelPlanByUser);
 };
 
 export default travelController;
