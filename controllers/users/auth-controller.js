@@ -83,7 +83,7 @@ const AuthenticationController = (app) => {
     // just for test, delete user by username
     const deleteUserByUsername = (req, res) =>
         userDao.deleteUserByUsername(req.params.username)
-            .then(status => res.send(status));
+            .then(() => res.send(200));
 
     // request mapping paths
     app.post("/api/auth/signup", signup);
