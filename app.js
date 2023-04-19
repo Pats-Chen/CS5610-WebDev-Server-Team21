@@ -9,13 +9,12 @@ import session from 'express-session'
 import dotenv from 'dotenv'
 import mongoose from "mongoose";
 import ReviewController from "./controllers/reviews/review-controller.js";
-
+import PlansController from "./controllers/plans/plans-controller.js";
 
 dotenv.config();
-
-// ******* const CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 const CONNECTION_STRING = "mongodb://127.0.0.1:27017/travelPlan"
-const DB_CONNECTION_STRING = "mongodb+srv://CS5610Team21:CS5610Team21@travelplanner.9rhwihg.mongodb.net/?retryWrites=true&w=majority"
+const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+
 mongoose.connect(DB_CONNECTION_STRING).then(() => console.log('DB started'))
     .catch(() => () => console.log(error.message));
 
@@ -61,8 +60,10 @@ app.use(express.json({
 
 HelloController(app);
 UsersController(app);
+PlansController(app);
 AuthenticationController(app);
 travelController(app);
 ReviewController(app);
 
 app.listen(process.env.PORT || 4000);
+
