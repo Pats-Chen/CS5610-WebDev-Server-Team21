@@ -8,6 +8,7 @@ import cors from 'cors'
 import session from 'express-session'
 import dotenv from 'dotenv'
 import mongoose from "mongoose";
+import ReviewController from "./controllers/reviews/review-controller.js";
 
 
 dotenv.config();
@@ -57,9 +58,11 @@ app.use(session(sess))
 app.use(express.json({
     limit: '50mb'
 }));
+
 HelloController(app);
 UsersController(app);
 AuthenticationController(app);
-travelController(app)
+travelController(app);
+ReviewController(app);
 
 app.listen(process.env.PORT || 4000);
