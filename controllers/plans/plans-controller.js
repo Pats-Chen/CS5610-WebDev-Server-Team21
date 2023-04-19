@@ -4,7 +4,7 @@ const  PlansController= (app) => {
     app.post('/api/plans', createPlan);
     app.delete('/api/plans/:pId', deletePlan);
     app.get('/api/plans/:pId', findPlan);
-    app.get('/api/plans/:userId', findAllPlanByUser);
+    app.get('/api/plans/all/:userId', findAllPlanByUser);
     app.put('/api/plans/:pId', updatePlan);
 }
 

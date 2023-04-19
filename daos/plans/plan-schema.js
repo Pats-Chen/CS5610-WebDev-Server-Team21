@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const PlanSchema = mongoose.Schema({
-                                       planId: {type: mongoose.Schema.Types.ObjectId, required: true},
+                                       // planId: {type: mongoose.Schema.Types.ObjectId, required: true},
                                        userId: {type: mongoose.Schema.Types.ObjectId, required: true},
                                        planName: {type: String, required: true},
                                        planDescription: String,
@@ -15,6 +15,6 @@ const PlanSchema = mongoose.Schema({
                                            name: String,
                                            placeId: String,
                                        }]
-                                   }, {collection: 'test'})
+                                   }, {collection: 'plan'})
 
 export default PlanSchema;
