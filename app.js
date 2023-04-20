@@ -13,7 +13,7 @@ import PlansController from "./controllers/plans/plans-controller.js";
 
 dotenv.config();
 const CONNECTION_STRING = "mongodb://127.0.0.1:27017/travelPlan"
-const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+const DB_CONNECTION_STRING = "mongodb+srv://CS5610Team21:CS5610Team21@travelplanner.9rhwihg.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(DB_CONNECTION_STRING).then(() => console.log('DB started'))
     .catch(() => () => console.log(error.message));
