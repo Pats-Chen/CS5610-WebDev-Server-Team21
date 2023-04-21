@@ -7,13 +7,14 @@ const TravelPlan = mongoose.Schema({
     planDescription: {type: String},
     locations: [
         {
+            placeId: {type: String, required: true},
+            name: {type: String, required: true},
             address: {type: String, required: true},
             location: {
                 lat: {type: Number},
                 lng: {type: Number}
             },
-            name: {type: String, required: true},
-            placeId: {type: String, required: true}
+            timeOfStay: {type: Number, required: true}
         }
     ]
 }, {
