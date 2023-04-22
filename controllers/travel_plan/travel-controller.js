@@ -1,8 +1,9 @@
 import * as travelDao from "../../daos/travel_plan/travel_plan_dao.js";
 import {
+    adminFind,
     deletePlanByPlanID,
     deleteTravelPlan,
-    findTravelPlanbyID,
+    findTravelPlanbyID, getRecommendation,
     updateTravelPlan
 } from "../../daos/travel_plan/travel_plan_dao.js";
 import {json} from "express";
@@ -122,12 +123,32 @@ const travelController = (app) => {
         }
     }
 
+    const getRecommendation = async (req, res) => {
+        try {
+            const plans = await travelDao.getRecommendation();
+            res.json(plans);
+        } catch (err) {
+            res.status(500).send(err.message);
+        }
+    }
+
+    const adminFind = async (req, res) => {
+        try {
+            const plans = await travelDao.adminFind();
+            res.json(plans);
+        } catch (err) {
+            res.status(500).send(err.message);
+        }
+    }
+
     app.post("/api/travel/create", travel_create);
     app.get("/api/travel/get/:uid", travel_info);
     app.delete('/api/travel/delete/:pid', deletePlanByPlanID);
     app.put('/api/travel/update/:pid', updateTravelPlan);
     app.get("/api/travel/findOne/:pid", findTravelPlanbyID);
     app.get("/api/travel/findAll/:uid", findAllTravelPlanByUser);
+    app.get("/api/travel/findAll", adminFind);
+    app.get("/api/travel/recommendation", getRecommendation);
 };
 
 export default travelController;

@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const TravelPlan = mongoose.Schema({
-    planCreator: {type: String, required: true},
-    planOwner: {type: String, required: true},
+    planCreator: {type: mongoose.Schema.Types.ObjectId, required: true},
+    planOwner: {type: mongoose.Schema.Types.ObjectId, required: true},
     planName: {type: String, required: true},
     planDescription: {type: String},
     locations: [
@@ -14,7 +14,7 @@ const TravelPlan = mongoose.Schema({
                 lat: {type: Number},
                 lng: {type: Number}
             },
-            timeOfStay: {type: Number, required: true}
+            timeOfStay: {type: Number}
         }
     ]
 }, {
