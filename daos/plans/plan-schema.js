@@ -15,6 +15,6 @@ const PlanSchema = mongoose.Schema({
                                            name: String,
                                            placeId: String,
                                        }]
-                                   }, {collection: 'plan'})
+                                   }, {collection: 'plans'})
 
 export default PlanSchema;
