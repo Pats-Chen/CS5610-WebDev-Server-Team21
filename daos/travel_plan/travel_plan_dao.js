@@ -23,5 +23,33 @@ export const findTravelPlanbyID = async (pId) =>
 export const deletePlanByPlanID = async (pid)=>{
    return  TravelModel.deleteOne({_id: pid});
 }
-export const findAllTravelPlanByUser = async (userId) =>
-    TravelModel.find({planCreator:userId});
+export const findAllTravelPlanByUser = async (userId) => {
+   return TravelModel.find({planCreator: userId});
+}
+export const getRecommendation = async () => {
+   const results = await TravelModel.aggregate([
+      {
+         $lookup: {
+            from: 'users',
+            localField: 'planOwner',
+            foreignField: '_id',
+            as: 'planOwner'
+         }
+      },
+      {
+         $match: {
+            'planOwner.userStatus': 'premium'
+         }
+      },
+      {
+         $sample: { size: 6 }
+      }
+   ]).exec();
+   console.log(results);
+   return results;
+
+}
+
+export const adminFind = async (userId) => {
+   return TravelModel.find();
+}
