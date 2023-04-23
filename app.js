@@ -28,7 +28,8 @@ app.use(cors(
         // must whitelists allowed domains(if using credentials)
         // http://localhost:3000
         // ********  origin: ['http://localhost:3000', process.env.CORS_ORIGIN]
-        origin: 'https://main--mellifluous-dieffenbachia-a9ad37.netlify.app/',
+        origin: 'https://main--mellifluous-dieffenbachia-a9ad37.netlify.app',
+
     }));
 
 // Secret is used in hashing the session ID
